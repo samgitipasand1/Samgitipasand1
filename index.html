@@ -1,240 +1,639 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sam Gitipasand | Official Website</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-:root {
---bg: #000000;
---text: #ffffff;
---glass: rgba(255, 255, 255, 0.1);
---glass-border: rgba(255, 255, 255, 0.2);
---accent: #00d4ff;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam Gitipasand | Official Portfolio</title>
+  <meta name="description" content="Official bilingual portfolio of Sam Gitipasand - actor and model." />
+  <style>
+    :root {
+      --bg: #07090d;
+      --bg-soft: #10141b;
+      --surface: rgba(255, 255, 255, 0.08);
+      --surface-strong: rgba(255, 255, 255, 0.14);
+      --border: rgba(255, 255, 255, 0.16);
+      --text: #f5f7fb;
+      --muted: #b6c0cf;
+      --accent: #7dd3fc;
+      --accent-2: #c084fc;
+      --shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+    }
 
-[data-theme="light"] {
---bg: #f0f0f0;
---text: #1a1a1a;
---glass: rgba(0, 0, 0, 0.05);
---glass-border: rgba(0, 0, 0, 0.1);
---accent: #0071e3;
-}
+    body[data-theme="light"] {
+      --bg: #eef2f7;
+      --bg-soft: #ffffff;
+      --surface: rgba(255, 255, 255, 0.72);
+      --surface-strong: rgba(255, 255, 255, 0.9);
+      --border: rgba(15, 23, 42, 0.12);
+      --text: #101828;
+      --muted: #475467;
+      --accent: #0ea5e9;
+      --accent-2: #9333ea;
+      --shadow: 0 16px 36px rgba(15, 23, 42, 0.10);
+    }
 
-* { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-/* --- دکمه‌های تنظیمات (نسخه جدید: گوشه بالا) --- /
-.top-controls {
-position: fixed;
-top: 20px;
-/ در حالت RTL سمت راست، در حالت LTR سمت چپ قرار می‌گیرد */
-right: 20px;
-z-index: 2000;
-display: flex;
-gap: 10px;
-}
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* وقتی زبان انگلیسی شود، دکمه‌ها به سمت چپ بروند */
-html[dir="ltr"] .top-controls {
-right: auto;
-left: 20px;
-}
+    body {
+      font-family: Tahoma, "Segoe UI", Arial, sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(125, 211, 252, 0.10), transparent 30%),
+        radial-gradient(circle at 85% 15%, rgba(192, 132, 252, 0.10), transparent 24%),
+        var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
+    }
 
-.btn-control {
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-color: var(--text);
-width: 45px;
-height: 45px;
-border-radius: 50%; /* دایره‌ای و مدرن */
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.1rem;
-box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.btn-control:hover {
-background: var(--accent);
-color: #000;
-transform: scale(1.1);
-}
+    .page-shell {
+      width: min(1180px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 24px 0 40px;
+    }
 
-/* --- گالری پیانویی --- */
-.piano-wrapper {
-display: flex;
-width: 100%;
-height: 75vh;
-gap: 8px;
-padding: 10px;
-}
+    .hero {
+      padding-top: 18px;
+    }
 
-.piano-item {
-flex: 1;
-height: 100%;
-border-radius: 15px;
-overflow: hidden;
-position: relative;
-cursor: pointer;
-transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
-border: 1px solid var(--glass-border);
-}
+    .controls-wrap {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 18px;
+    }
 
-.piano-item img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.7s ease;
-}
+    .controls {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 16px;
+      box-shadow: var(--shadow);
+      flex-wrap: wrap;
+    }
 
-.piano-item:hover {
-flex: 6;
-border-radius: 20px;
-}
+    .control-btn {
+      border: 1px solid var(--border);
+      background: var(--surface-strong);
+      color: var(--text);
+      height: 44px;
+      min-width: 44px;
+      padding: 0 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-size: 0.95rem;
+      font-weight: 700;
+      transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+    }
 
-.piano-item:hover img {
-transform: scale(1.1);
-}
+    .control-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
 
-/* --- محتوا --- */
-.content-container {
-margin: -60px 20px 60px;
-background: var(--glass);
-backdrop-filter: blur(25px);
--webkit-backdrop-filter: blur(25px);
-border: 1px solid var(--glass-border);
-border-radius: 40px;
-padding: 50px 30px;
-text-align: center;
-position: relative;
-z-index: 10;
-max-width: 750px;
-margin-left: auto;
-margin-right: auto;
-}
+    .hero-copy {
+      text-align: center;
+      margin-bottom: 22px;
+      padding: 0 8px;
+    }
 
-.actor-name {
-font-size: clamp(2rem, 6vw, 3.5rem);
-font-weight: 200;
-letter-spacing: 5px;
-text-transform: uppercase;
-margin-bottom: 25px;
-background: linear-gradient(to right, var(--text), var(--accent));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
+    .welcome {
+      font-size: clamp(1.8rem, 3.5vw, 3.4rem);
+      line-height: 1.15;
+      font-weight: 800;
+      letter-spacing: 0;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
 
-.about-text {
-font-size: 1.15rem;
-line-height: 2;
-margin-bottom: 35px;
-opacity: 0.9;
-}
+    .hero-name {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--muted);
+      max-width: 760px;
+      margin: 0 auto;
+    }
 
-.social-footer {
-display: flex;
-justify-content: center;
-gap: 30px;
-}
-.social-footer a {
-color: var(--text);
-font-size: 2rem;
-transition: 0.3s;
-}
-.social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
+    .piano-gallery {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+      min-height: 440px;
+      height: 58vh;
+      max-height: 680px;
+      margin-bottom: 28px;
+    }
 
-/* موبایل */
-@media (max-width: 768px) {
-.piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
-.piano-item { border-radius: 0; }
-.top-controls { top: 10px; }
-.btn-control { width: 40px; height: 40px; font-size: 1rem; }
-}
-</style>
+    .piano-panel {
+      position: relative;
+      flex: 1 1 0;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      box-shadow: var(--shadow);
+      transition: flex 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.25s ease;
+      min-width: 0;
+    }
+
+    .piano-panel:hover {
+      flex: 3.4 1 0;
+      transform: translateY(-2px);
+    }
+
+    .piano-panel img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center top;
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    .piano-overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 18px 14px 14px;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.68), rgba(0, 0, 0, 0.02));
+      color: #fff;
+    }
+
+    .piano-overlay span {
+      display: inline-block;
+      font-size: 0.88rem;
+      font-weight: 700;
+      opacity: 0.96;
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 18px;
+      align-items: start;
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding: 24px;
+    }
+
+    .panel + .panel {
+      margin-top: 18px;
+    }
+
+    .section-title {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: var(--accent);
+    }
+
+    .about-text,
+    .quote,
+    .contact-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    .facts {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .fact {
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    body[data-theme="light"] .fact {
+      background: rgba(15, 23, 42, 0.03);
+    }
+
+    .fact strong {
+      display: block;
+      font-size: 0.9rem;
+      margin-bottom: 3px;
+      color: var(--text);
+    }
+
+    .fact span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .resume-list {
+      list-style: none;
+      display: grid;
+      gap: 10px;
+    }
+
+    .resume-item {
+      padding: 13px 14px;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.03);
+    }
+
+    body[data-theme="light"] .resume-item {
+      background: rgba(15, 23, 42, 0.03);
+    }
+
+    .resume-item strong {
+      color: var(--text);
+      display: block;
+      margin-bottom: 2px;
+      font-size: 0.96rem;
+    }
+
+    .resume-item span {
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .contact-links {
+      display: grid;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.04);
+      transition: transform 0.2s ease, border-color 0.2s ease;
+    }
+
+    body[data-theme="light"] .contact-link {
+      background: rgba(15, 23, 42, 0.03);
+    }
+
+    .contact-link:hover {
+      transform: translateY(-1px);
+      border-color: var(--accent);
+    }
+
+    .contact-label {
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .contact-value {
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: left;
+      direction: ltr;
+    }
+
+    .quote {
+      text-align: center;
+      font-size: 1.05rem;
+      padding-top: 4px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 26px 12px 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    [data-lang] {
+      display: none;
+    }
+
+    body.lang-fa [data-lang="fa"] {
+      display: block;
+    }
+
+    body.lang-en [data-lang="en"] {
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .page-shell {
+        width: min(100% - 18px, 100%);
+        padding-top: 14px;
+      }
+
+      .controls {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .control-btn {
+        flex: 1 1 110px;
+      }
+
+      .piano-gallery {
+        min-height: auto;
+        height: auto;
+        flex-direction: column;
+      }
+
+      .piano-panel,
+      .piano-panel:hover {
+        flex: none;
+      }
+
+      .piano-panel {
+        height: 54vh;
+        min-height: 240px;
+        max-height: 420px;
+      }
+
+      .panel {
+        padding: 18px;
+        border-radius: 16px;
+      }
+
+      .facts {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-link {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .contact-value {
+        text-align: right;
+        direction: rtl;
+        word-break: break-word;
+      }
+    }
+  </style>
 </head>
-<body>
+<body class="lang-fa" data-theme="dark">
+  <div class="page-shell">
+    <header class="hero">
+      <div class="controls-wrap">
+        <div class="controls">
+          <button class="control-btn" id="langToggle" type="button">FA / EN</button>
+          <button class="control-btn" id="themeToggle" type="button">☀ / ☾</button>
+        </div>
+      </div>
 
-<!-- دکمه‌های کنترلی (حالا در گوشه بالا و بسیار شیک) -->
-<div class="top-controls">
-<button class="btn-control" onclick="toggleLanguage()" title="تغییر زبان">
-<i class="fas fa-language"></i>
-</button>
-<button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
-<i class="fas fa-moon"></i>
-</button>
-</div>
+      <div class="hero-copy">
+        <h1 class="welcome">Welcome to my website</h1>
+        <p class="hero-name" data-lang="fa">سام گیتی‌پسند | بازیگر و مدل</p>
+        <p class="hero-name" data-lang="en">Sam Gitipasand | Actor & Model</p>
+      </div>
 
-<!-- گالری -->
-<div class="piano-wrapper">
-<div class="piano-item"><img src="1Sam.jpg"></div>
-<div class="piano-item"><img src="3sam.jpg"></div>
-<div class="piano-item"><img src="4sam.jpg"></div>
-<div class="piano-item"><img src="5sam.jpg"></div>
-<div class="piano-item"><img src="7sam.jpg"></div>
-<div class="piano-item"><img src="8sam.jpg"></div>
-<div class="piano-item"><img src="9sam.jpg"></div>
-</div>
+      <section class="piano-gallery" aria-label="Photo Gallery">
+        <div class="piano-panel">
+          <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=80" alt="Sam portrait 1">
+          <div class="piano-overlay"><span data-lang="fa">پرتره</span><span data-lang="en">Portrait</span></div>
+        </div>
+        <div class="piano-panel">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80" alt="Sam portrait 2">
+          <div class="piano-overlay"><span data-lang="fa">اجرای هنری</span><span data-lang="en">Performance</span></div>
+        </div>
+        <div class="piano-panel">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=1200&q=80" alt="Sam portrait 3">
+          <div class="piano-overlay"><span data-lang="fa">استودیو</span><span data-lang="en">Studio</span></div>
+        </div>
+        <div class="piano-panel">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=1200&q=80" alt="Sam portrait 4">
+          <div class="piano-overlay"><span data-lang="fa">پروژه</span><span data-lang="en">Project</span></div>
+        </div>
+      </section>
+    </header>
 
-<!-- محتوا -->
-<div class="content-container">
-<h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
-<h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
+    <main class="content-grid">
+      <section>
+        <div class="panel">
+          <h2 class="section-title" data-lang="fa">درباره من</h2>
+          <h2 class="section-title" data-lang="en">About Me</h2>
 
-<div class="about-text fa-text">
-من سام هستم، به وبسایت رسمی من خوش آمدید.<br>
-این وبسایت برای معرفی فعالیت‌ها، آثار هنری و راه‌های ارتباط با من طراحی شده است.<br>
-از همراهی شما سپاسگزارم.
-</div>
-<div class="about-text en-text" style="display:none">
-I am Sam. Welcome to my official website.<br>
-This website is designed to introduce my activities, artworks, and ways to connect with me.<br>
-Thank you for your support.
-</div>
+          <p class="about-text" data-lang="fa">
+            من سام گیتی‌پسند هستم؛ بازیگر و مدل. متولد ۱۳۹۸/۰۱/۲۹ در تهران. به زبان‌های فارسی، انگلیسی و چینی مسلط هستم و به ورزش‌های دوچرخه‌سواری، بدمینتون، شنا و بسکتبال علاقه‌مندم. با پوست روشن، انرژی بالا و علاقه جدی به اجرا، در پروژه‌های نمایشی، تصویری و تبلیغاتی فعالیت داشته‌ام.
+          </p>
+          <p class="about-text" data-lang="en">
+            I am Sam Gitipasand, an actor and model, born on 1398/01/29 in Tehran. I speak Persian, English, and Chinese, and I enjoy cycling, badminton, swimming, and basketball. With fair skin, strong on-camera presence, and serious interest in performance, I have worked in dramatic, visual, and commercial projects.
+          </p>
 
-<div class="social-footer">
-<a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
-<a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-</div>
+          <div class="facts">
+            <div class="fact">
+              <strong data-lang="fa">تاریخ تولد</strong>
+              <strong data-lang="en">Birth Date</strong>
+              <span>1398/01/29</span>
+            </div>
+            <div class="fact">
+              <strong data-lang="fa">محل تولد</strong>
+              <strong data-lang="en">Born In</strong>
+              <span data-lang="fa">تهران</span>
+              <span data-lang="en">Tehran</span>
+            </div>
+            <div class="fact">
+              <strong data-lang="fa">زبان‌ها</strong>
+              <strong data-lang="en">Languages</strong>
+              <span data-lang="fa">فارسی، انگلیسی، چینی</span>
+              <span data-lang="en">Persian, English, Chinese</span>
+            </div>
+            <div class="fact">
+              <strong data-lang="fa">ورزش‌ها</strong>
+              <strong data-lang="en">Sports</strong>
+              <span data-lang="fa">دوچرخه‌سواری، بدمینتون، شنا، بسکتبال</span>
+              <span data-lang="en">Cycling, Badminton, Swimming, Basketball</span>
+            </div>
+            <div class="fact">
+              <strong data-lang="fa">ویژگی ظاهری</strong>
+              <strong data-lang="en">Appearance</strong>
+              <span data-lang="fa">پوست روشن</span>
+              <span data-lang="en">Fair skin</span>
+            </div>
+          </div>
+        </div>
 
-<script>
-function toggleTheme() {
-const body = document.body;
-const btn = document.getElementById('themeBtn');
-if (body.getAttribute('data-theme') === 'light') {
-body.removeAttribute('data-theme');
-btn.innerHTML = '<i class="fas fa-moon"></i>';
-} else {
-body.setAttribute('data-theme', 'light');
-btn.innerHTML = '<i class="fas fa-sun"></i>';
-}
-}
+        <div class="panel">
+          <h2 class="section-title" data-lang="fa">جمله پایانی</h2>
+          <h2 class="section-title" data-lang="en">Closing Quote</h2>
 
-function toggleLanguage() {
-const html = document.documentElement;
-const faElements = document.querySelectorAll('.fa-text');
-const enElements = document.querySelectorAll('.en-text');
+          <p class="quote" data-lang="fa">هر نقش، سفری است به دنیایی نو؛ و من آماده‌ی سفرم.</p>
+          <p class="quote" data-lang="en">Every role is a journey into a new world, and I am ready for the journey.</p>
+        </div>
+      </section>
 
-if (html.dir === "rtl") {
-html.dir = "ltr";
-html.lang = "en";
-faElements.forEach(el => el.style.display = 'none');
-enElements.forEach(el => el.style.display = 'block');
-} else {
-html.dir = "rtl";
-html.lang = "fa";
-faElements.forEach(el => el.style.display = 'block');
-enElements.forEach(el => el.style.display = 'none');
-}
-}
-</script>
+      <section>
+        <div class="panel">
+          <h2 class="section-title" data-lang="fa">رزومه هنری</h2>
+          <h2 class="section-title" data-lang="en">Filmography & Resume</h2>
+
+          <ul class="resume-list">
+            <li class="resume-item">
+              <strong data-lang="fa">سریال مرز</strong>
+              <strong data-lang="en">Marz Series</strong>
+              <span data-lang="fa">نقش اصلی، کارگردان: سید حاتمی</span>
+              <span data-lang="en">Lead role, directed by Seyed Hatami</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">نگین ارباب</strong>
+              <strong data-lang="en">Negin-e Arbab</strong>
+              <span data-lang="fa">کارگردان: محمدحسین لطیفی</span>
+              <span data-lang="en">Directed by Mohammad Hossein Latifi</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">برتا</strong>
+              <strong data-lang="en">Bertha Web Series</strong>
+              <span data-lang="fa">نمایش خانگی، کارگردان: آقای ترابی</span>
+              <span data-lang="en">Home-streaming/web series, directed by Mr. Tarabi</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">فیلم‌های کوتاه جشنواره‌ای</strong>
+              <strong data-lang="en">Festival Short Films</strong>
+              <span data-lang="fa">ریحانه نبویان (نقش اصلی)، الهام محمدزاده، اسدی‌پور</span>
+              <span data-lang="en">Projects with Reyhaneh Nabavian (lead role), Elham Mohammadzadeh, and Asadipour</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">فیلم جشنواره‌ای کروماکی</strong>
+              <strong data-lang="en">Chroma-Key Festival Film</strong>
+              <span data-lang="fa">نقش اصلی، کارگردان: محمود کریمی</span>
+              <span data-lang="en">Lead role, directed by Mahmoud Karimi</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">موزیک‌ویدیو روزبه بمانی</strong>
+              <strong data-lang="en">Rouzbeh Bamani Music Video</strong>
+              <span data-lang="fa">ایفای نقش کودکی روزبه بمانی</span>
+              <span data-lang="en">Played the childhood role of Rouzbeh Bamani</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2 class="section-title" data-lang="fa">تیزرهای تبلیغاتی و عکاسی</h2>
+          <h2 class="section-title" data-lang="en">Commercial Teasers & Photography</h2>
+
+          <ul class="resume-list">
+            <li class="resume-item">
+              <strong data-lang="fa">برندها</strong>
+              <strong data-lang="en">Brands</strong>
+              <span data-lang="fa">کاله، آقای فرش، بیمه دی، شکلات فرمند، آربیانا، ماجان، دوو، دیجی‌کالا، منتور</span>
+              <span data-lang="en">Kalleh, Aghaye Farsh, Bimeh Day, Farmand Chocolate, Arbiana, Majan, Doo, Digikala, Mentor</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">همکاری‌های تکرارشونده</strong>
+              <strong data-lang="en">Repeat Invitations</strong>
+              <span data-lang="fa">دعوت‌های چندباره برای کاله، ماجان و آربیانا</span>
+              <span data-lang="en">Repeated invitations for Kalleh, Majan, and Arbiana projects</span>
+            </li>
+
+            <li class="resume-item">
+              <strong data-lang="fa">عکاسی صنعتی</strong>
+              <strong data-lang="en">Industrial Photography</strong>
+              <span data-lang="fa">عکاسی برای برند صادراتی نخودی و خشکبار</span>
+              <span data-lang="en">Photography for an export-focused chickpea and nuts brand</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="panel">
+          <h2 class="section-title" data-lang="fa">ارتباط با من</h2>
+          <h2 class="section-title" data-lang="en">Contact</h2>
+
+          <p class="contact-text" data-lang="fa">برای همکاری‌های هنری، تبلیغاتی و پروژه‌های تصویری از راه‌های زیر در ارتباط باشید.</p>
+          <p class="contact-text" data-lang="en">For acting, modeling, visual, and commercial collaborations, please use the links below.</p>
+
+          <div class="contact-links">
+            <a class="contact-link" href="https://wa.me/989369957018" target="_blank" rel="noopener noreferrer">
+              <span class="contact-label">WhatsApp</span>
+              <span class="contact-value">09369957018</span>
+            </a>
+
+            <a class="contact-link" href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank" rel="noopener noreferrer">
+              <span class="contact-label">Instagram</span>
+              <span class="contact-value">@sam_gitipasand1</span>
+            </a>
+
+            <a class="contact-link" href="https://t.me/sam_gitipasand1" target="_blank" rel="noopener noreferrer">
+              <span class="contact-label">Telegram</span>
+              <span class="contact-value">@sam_gitipasand1</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-lang="fa">Sam Gitipasand Official Portfolio</p>
+      <p data-lang="en">Sam Gitipasand Official Portfolio</p>
+    </footer>
+  </div>
+
+  <script>
+    const body = document.body;
+    const langToggle = document.getElementById("langToggle");
+    const themeToggle = document.getElementById("themeToggle");
+
+    let currentLang = "fa";
+    let currentTheme = "dark";
+
+    function applyLanguage(lang) {
+      currentLang = lang;
+      body.classList.remove("lang-fa", "lang-en");
+      body.classList.add(lang === "fa" ? "lang-fa" : "lang-en");
+      body.setAttribute("lang", lang === "fa" ? "fa" : "en");
+      body.setAttribute("dir", lang === "fa" ? "rtl" : "ltr");
+      document.documentElement.setAttribute("lang", lang === "fa" ? "fa" : "en");
+      document.documentElement.setAttribute("dir", lang === "fa" ? "rtl" : "ltr");
+    }
+
+    function applyTheme(theme) {
+      currentTheme = theme;
+      body.setAttribute("data-theme", theme);
+    }
+
+    langToggle.addEventListener("click", function () {
+      applyLanguage(currentLang === "fa" ? "en" : "fa");
+    });
+
+    themeToggle.addEventListener("click", function () {
+      applyTheme(currentTheme === "dark" ? "light" : "dark");
+    });
+
+    applyLanguage("fa");
+    applyTheme("dark");
+  </script>
 </body>
 </html>
-
-
