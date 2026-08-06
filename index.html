@@ -7,429 +7,233 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <style>
 :root {
-  --bg: #050505;
-  --text: #ffffff;
-  --muted: rgba(255,255,255,0.78);
-  --glass: rgba(255,255,255,0.10);
-  --glass-border: rgba(255,255,255,0.16);
-  --accent: #00d4ff;
-  --accent2: #7c5cff;
-  --shadow: 0 15px 45px rgba(0,0,0,0.35);
+--bg: #000000;
+--text: #ffffff;
+--glass: rgba(255, 255, 255, 0.1);
+--glass-border: rgba(255, 255, 255, 0.2);
+--accent: #00d4ff;
 }
 
 [data-theme="light"] {
-  --bg: #f3f4f8;
-  --text: #121212;
-  --muted: rgba(0,0,0,0.72);
-  --glass: rgba(255,255,255,0.62);
-  --glass-border: rgba(0,0,0,0.10);
-  --accent: #0077ff;
-  --accent2: #8b5cf6;
-  --shadow: 0 15px 45px rgba(0,0,0,0.14);
+--bg: #f0f0f0;
+--text: #1a1a1a;
+--glass: rgba(0, 0, 0, 0.05);
+--glass-border: rgba(0, 0, 0, 0.1);
+--accent: #0071e3;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; }
-body {
-  background:
-    radial-gradient(circle at top, rgba(0,212,255,0.13), transparent 30%),
-    radial-gradient(circle at bottom, rgba(124,92,255,0.12), transparent 28%),
-    var(--bg);
-  color: var(--text);
-  font-family: Tahoma, "Segoe UI", sans-serif;
-  overflow-x: hidden;
-  transition: background .4s ease, color .4s ease;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
 
-a { color: inherit; text-decoration: none; }
-
+/* --- دکمه‌های تنظیمات (نسخه جدید: گوشه بالا) --- /
 .top-controls {
-  position: fixed;
-  top: 18px;
-  right: 18px;
-  display: flex;
-  gap: 10px;
-  z-index: 2000;
+position: fixed;
+top: 20px;
+/ در حالت RTL سمت راست، در حالت LTR سمت چپ قرار می‌گیرد */
+right: 20px;
+z-index: 2000;
+display: flex;
+gap: 10px;
 }
+
+/* وقتی زبان انگلیسی شود، دکمه‌ها به سمت چپ بروند */
 html[dir="ltr"] .top-controls {
-  right: auto;
-  left: 18px;
+right: auto;
+left: 20px;
 }
 
 .btn-control {
-  width: 46px;
-  height: 46px;
-  border: 1px solid var(--glass-border);
-  border-radius: 50%;
-  background: var(--glass);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  color: var(--text);
-  cursor: pointer;
-  display: grid;
-  place-items: center;
-  box-shadow: var(--shadow);
-  transition: transform .25s ease, background .25s ease, color .25s ease;
+background: var(--glass);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+border: 1px solid var(--glass-border);
+color: var(--text);
+width: 45px;
+height: 45px;
+border-radius: 50%; /* دایره‌ای و مدرن */
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.1rem;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
 }
+
 .btn-control:hover {
-  transform: translateY(-2px) scale(1.07);
-  background: var(--accent);
-  color: #000;
+background: var(--accent);
+color: #000;
+transform: scale(1.1);
 }
 
-.hero {
-  padding: 92px 16px 20px;
-  text-align: center;
-}
-.hero-title {
-  font-size: clamp(1.9rem, 5vw, 4rem);
-  font-weight: 900;
-  letter-spacing: 1px;
-  line-height: 1.2;
-  margin-bottom: 10px;
-  background: linear-gradient(90deg, var(--text), var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
-.hero-subtitle {
-  font-size: clamp(1rem, 2vw, 1.15rem);
-  color: var(--muted);
-  max-width: 860px;
-  margin: 0 auto;
-  line-height: 1.9;
-}
-
+/* --- گالری پیانویی --- */
 .piano-wrapper {
-  width: 100%;
-  height: 72vh;
-  display: flex;
-  gap: 8px;
-  padding: 10px;
-  margin-top: 10px;
+display: flex;
+width: 100%;
+height: 75vh;
+gap: 8px;
+padding: 10px;
 }
+
 .piano-item {
-  flex: 1;
-  min-width: 0;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 1px solid var(--glass-border);
-  box-shadow: var(--shadow);
-  cursor: pointer;
-  position: relative;
-  transition: flex .7s cubic-bezier(.25,1,.5,1), transform .4s ease, border-radius .4s ease;
+flex: 1;
+height: 100%;
+border-radius: 15px;
+overflow: hidden;
+position: relative;
+cursor: pointer;
+transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
+border: 1px solid var(--glass-border);
 }
+
 .piano-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: scale(1.01);
-  transition: transform .7s ease, filter .4s ease;
-  filter: saturate(1.05) contrast(1.03);
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.7s ease;
 }
+
 .piano-item:hover {
-  flex: 6;
-  transform: translateY(-4px);
-  border-radius: 22px;
-}
-.piano-item:hover img { transform: scale(1.08); }
-
-.sections {
-  width: min(1100px, calc(100% - 24px));
-  margin: -34px auto 34px;
-  display: grid;
-  gap: 18px;
+flex: 6;
+border-radius: 20px;
 }
 
-.card {
-  background: var(--glass);
-  border: 1px solid var(--glass-border);
-  backdrop-filter: blur(22px);
-  -webkit-backdrop-filter: blur(22px);
-  border-radius: 28px;
-  box-shadow: var(--shadow);
-  padding: 24px 20px;
+.piano-item:hover img {
+transform: scale(1.1);
 }
 
-.section-title {
-  font-size: clamp(1.35rem, 2.7vw, 2rem);
-  font-weight: 900;
-  margin-bottom: 14px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.section-title i { color: var(--accent); }
-
-.about-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 14px 18px;
-}
-.info-box {
-  padding: 14px 16px;
-  border-radius: 18px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid var(--glass-border);
-}
-.info-label {
-  font-size: .9rem;
-  color: var(--accent);
-  margin-bottom: 6px;
-  font-weight: 700;
-}
-.info-value {
-  line-height: 1.9;
-  color: var(--text);
+/* --- محتوا --- */
+.content-container {
+margin: -60px 20px 60px;
+background: var(--glass);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+border: 1px solid var(--glass-border);
+border-radius: 40px;
+padding: 50px 30px;
+text-align: center;
+position: relative;
+z-index: 10;
+max-width: 750px;
+margin-left: auto;
+margin-right: auto;
 }
 
-.list {
-  display: grid;
-  gap: 10px;
-  line-height: 2;
-  color: var(--muted);
-}
-.list strong { color: var(--text); }
-
-.socials {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-}
-.socials a {
-  min-width: 54px;
-  height: 54px;
-  padding: 0 16px;
-  border-radius: 999px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid var(--glass-border);
-  color: var(--text);
-  transition: .25s ease;
-}
-.socials a:hover {
-  background: var(--accent);
-  color: #000;
-  transform: translateY(-2px);
+.actor-name {
+font-size: clamp(2rem, 6vw, 3.5rem);
+font-weight: 200;
+letter-spacing: 5px;
+text-transform: uppercase;
+margin-bottom: 25px;
+background: linear-gradient(to right, var(--text), var(--accent));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
 }
 
-.closing-quote {
-  text-align: center;
-  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
-  font-style: italic;
-  color: var(--text);
-  line-height: 2;
-  text-shadow: 0 0 18px rgba(0,212,255,0.20);
+.about-text {
+font-size: 1.15rem;
+line-height: 2;
+margin-bottom: 35px;
+opacity: 0.9;
 }
 
-.lang-hidden { display: none; }
-
-@media (max-width: 900px) {
-  .about-grid { grid-template-columns: 1fr; }
-  .piano-wrapper { height: 56vh; gap: 5px; padding: 6px; }
+.social-footer {
+display: flex;
+justify-content: center;
+gap: 30px;
 }
+.social-footer a {
+color: var(--text);
+font-size: 2rem;
+transition: 0.3s;
+}
+.social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
 
+/* موبایل */
 @media (max-width: 768px) {
-  .hero { padding-top: 82px; }
-  .top-controls { top: 10px; right: 10px; }
-  html[dir="ltr"] .top-controls { right: auto; left: 10px; }
-  .btn-control { width: 42px; height: 42px; }
-  .piano-wrapper { height: 48vh; }
-  .piano-item { border-radius: 12px; }
-  .sections { width: min(100% - 16px, 1100px); margin-top: -18px; }
-  .card { padding: 18px 14px; border-radius: 22px; }
+.piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
+.piano-item { border-radius: 0; }
+.top-controls { top: 10px; }
+.btn-control { width: 40px; height: 40px; font-size: 1rem; }
 }
 </style>
 </head>
 <body>
 
+<!-- دکمه‌های کنترلی (حالا در گوشه بالا و بسیار شیک) -->
 <div class="top-controls">
-  <button class="btn-control" onclick="toggleLanguage()" title="Change Language">
-    <i class="fas fa-language"></i>
-  </button>
-  <button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="Theme">
-    <i class="fas fa-moon"></i>
-  </button>
+<button class="btn-control" onclick="toggleLanguage()" title="تغییر زبان">
+<i class="fas fa-language"></i>
+</button>
+<button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
+<i class="fas fa-moon"></i>
+</button>
 </div>
 
-<section class="hero">
-  <h1 class="hero-title fa-text">به وبسایت من خوش آمدید</h1>
-  <h1 class="hero-title en-text lang-hidden">Welcome to My Website</h1>
-  <p class="hero-subtitle fa-text">
-    اینجا دنیای سام گیتی‌پسند است؛ بازیگر، مدل و هنرمندی با نگاه حرفه‌ای و شخصیت منحصربه‌فرد.
-  </p>
-  <p class="hero-subtitle en-text lang-hidden">
-    This is the world of Sam Gitipasand — an actor, model, and artist with a refined vision and unique presence.
-  </p>
-</section>
-
+<!-- گالری -->
 <div class="piano-wrapper">
-  <div class="piano-item"><img src="1Sam.jpg" alt="Sam photo 1"></div>
-  <div class="piano-item"><img src="3sam.jpg" alt="Sam photo 2"></div>
-  <div class="piano-item"><img src="4sam.jpg" alt="Sam photo 3"></div>
-  <div class="piano-item"><img src="5sam.jpg" alt="Sam photo 4"></div>
-  <div class="piano-item"><img src="7sam.jpg" alt="Sam photo 5"></div>
-  <div class="piano-item"><img src="8sam.jpg" alt="Sam photo 6"></div>
-  <div class="piano-item"><img src="9sam.jpg" alt="Sam photo 7"></div>
+<div class="piano-item"><img src="1Sam.jpg"></div>
+<div class="piano-item"><img src="3sam.jpg"></div>
+<div class="piano-item"><img src="4sam.jpg"></div>
+<div class="piano-item"><img src="5sam.jpg"></div>
+<div class="piano-item"><img src="7sam.jpg"></div>
+<div class="piano-item"><img src="8sam.jpg"></div>
+<div class="piano-item"><img src="9sam.jpg"></div>
 </div>
 
-<div class="sections">
-  <section class="card">
-    <h2 class="section-title fa-text"><i class="fas fa-user-circle"></i> درباره من</h2>
-    <h2 class="section-title en-text lang-hidden"><i class="fas fa-user-circle"></i> About Me</h2>
+<!-- محتوا -->
+<div class="content-container">
+<h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
+<h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
 
-    <div class="about-grid fa-text">
-      <div class="info-box">
-        <div class="info-label">تاریخ تولد</div>
-        <div class="info-value">1398/01/29</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">محل تولد</div>
-        <div class="info-value">تهران</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">زبان‌ها</div>
-        <div class="info-value">فارسی، انگلیسی، چینی</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">ویژگی ظاهری</div>
-        <div class="info-value">پوست روشن</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">ورزش‌ها</div>
-        <div class="info-value">دوچرخه‌سواری، بدمینتون، شنا، بسکتبال</div>
-      </div>
-    </div>
+<div class="about-text fa-text">
+من سام هستم، به وبسایت رسمی من خوش آمدید.<br>
+این وبسایت برای معرفی فعالیت‌ها، آثار هنری و راه‌های ارتباط با من طراحی شده است.<br>
+از همراهی شما سپاسگزارم.
+</div>
+<div class="about-text en-text" style="display:none">
+I am Sam. Welcome to my official website.<br>
+This website is designed to introduce my activities, artworks, and ways to connect with me.<br>
+Thank you for your support.
+</div>
 
-    <div class="about-grid en-text lang-hidden">
-      <div class="info-box">
-        <div class="info-label">Date of Birth</div>
-        <div class="info-value">1398/01/29</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">Birthplace</div>
-        <div class="info-value">Tehran</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">Languages</div>
-        <div class="info-value">Persian, English, Chinese</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">Appearance</div>
-        <div class="info-value">Fair skin</div>
-      </div>
-      <div class="info-box">
-        <div class="info-label">Sports</div>
-        <div class="info-value">Cycling, badminton, swimming, basketball</div>
-      </div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title fa-text"><i class="fas fa-film"></i> فیلم‌ها و سریال‌ها</h2>
-    <h2 class="section-title en-text lang-hidden"><i class="fas fa-film"></i> Filmography & Series</h2>
-
-    <div class="list fa-text">
-      <div><strong>سریال مرز</strong> — نقش اصلی، کارگردانی آقای سید حاتمی</div>
-      <div><strong>سریال نگین ارباب</strong> — کارگردانی آقای محمدحسین لطیفی</div>
-      <div><strong>سریال خانگی برتا</strong> — کارگردانی آقای ترابی</div>
-      <div><strong>فیلم کوتاه جشنواره‌ای</strong> — نقش اصلی، کارگردانی خانم ریحانه نبویان</div>
-      <div><strong>فیلم کوتاه جشنواره‌ای</strong> — کارگردانی خانم الهام محمدزاده</div>
-      <div><strong>فیلم کوتاه جشنواره‌ای</strong> — کارگردانی آقای اسدی‌پور</div>
-      <div><strong>فیلم جشنواره‌ای کروماکی</strong> — نقش اصلی، کارگردانی آقای محمود کریمی</div>
-      <div><strong>موزیک‌ویدیو روزبه بمانی</strong> — نقش کودکی</div>
-    </div>
-
-    <div class="list en-text lang-hidden">
-      <div><strong>Marz Series</strong> — Lead role, directed by Mr. Seyed Hatami</div>
-      <div><strong>Negin-e Arbab Series</strong> — directed by Mr. Mohammad Hossein Latifi</div>
-      <div><strong>Bertha Home Series</strong> — directed by Mr. Tarabi</div>
-      <div><strong>Festival Short Film</strong> — Lead role, directed by Ms. Reyhaneh Nabavian</div>
-      <div><strong>Festival Short Film</strong> — directed by Ms. Elham Mohammadzadeh</div>
-      <div><strong>Festival Short Film</strong> — directed by Mr. Asadi Pour</div>
-      <div><strong>Chromakey Festival Film</strong> — Lead role, directed by Mr. Mahmoud Karimi</div>
-      <div><strong>Rozbeh Bemani Music Video</strong> — Childhood role</div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title fa-text"><i class="fas fa-bullhorn"></i> تیزرهای تبلیغاتی و سوشال مدیا</h2>
-    <h2 class="section-title en-text lang-hidden"><i class="fas fa-bullhorn"></i> Commercial Teasers & Social Media</h2>
-
-    <div class="list fa-text">
-      <div>تیزر کاله، آقای فرش، بیمه دی، شکلات فرمند، آربیانا، ماجان، محصولات دوو، دیجی‌کالا، صرافی تبدیل</div>
-      <div>تیزر نوشیدنی انرژی‌زای برند بین‌المللی منتور</div>
-      <div>عکاسی صنعتی برای برند صادراتی نخودی نمکی</div>
-      <div>دعوت‌های متعدد برای تیزرهای کاله، ماجان و آربیانا</div>
-    </div>
-
-    <div class="list en-text lang-hidden">
-      <div>Teasers for Kalleh, Aghaye Farsh, Day Insurance, Farmand Chocolate, Arbiana, Majan, Doo appliances, Digikala, and Takhfif Exchange</div>
-      <div>Energy drink teaser for the international Mentor brand</div>
-      <div>Industrial photography for an export chickpea brand</div>
-      <div>Multiple invitations for Kalleh, Majan, and Arbiana campaigns</div>
-    </div>
-  </section>
-
-  <section class="card">
-    <h2 class="section-title fa-text"><i class="fas fa-phone-alt"></i> ارتباط با من</h2>
-    <h2 class="section-title en-text lang-hidden"><i class="fas fa-phone-alt"></i> Contact</h2>
-
-    <div class="socials">
-      <a href="https://wa.me/989369957018" target="_blank" rel="noopener">
-        <i class="fab fa-whatsapp"></i><span>WhatsApp</span>
-      </a>
-      <a href="https://t.me/sam_gitipasand1" target="_blank" rel="noopener">
-        <i class="fab fa-telegram"></i><span>Telegram</span>
-      </a>
-      <a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank" rel="noopener">
-        <i class="fab fa-instagram"></i><span>Instagram</span>
-      </a>
-    </div>
-  </section>
-
-  <section class="card">
-    <p class="closing-quote fa-text">«هر نقش، فرصتی برای زندگی یک جهان تازه است.»</p>
-    <p class="closing-quote en-text lang-hidden">“Every role is a chance to live a new world.”</p>
-  </section>
+<div class="social-footer">
+<a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
+<a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
 </div>
 
 <script>
 function toggleTheme() {
-  const body = document.body;
-  const btn = document.getElementById('themeBtn');
-  const isLight = body.getAttribute('data-theme') === 'light';
-  if (isLight) {
-    body.removeAttribute('data-theme');
-    btn.innerHTML = '<i class="fas fa-moon"></i>';
-  } else {
-    body.setAttribute('data-theme', 'light');
-    btn.innerHTML = '<i class="fas fa-sun"></i>';
-  }
+const body = document.body;
+const btn = document.getElementById('themeBtn');
+if (body.getAttribute('data-theme') === 'light') {
+body.removeAttribute('data-theme');
+btn.innerHTML = '<i class="fas fa-moon"></i>';
+} else {
+body.setAttribute('data-theme', 'light');
+btn.innerHTML = '<i class="fas fa-sun"></i>';
+}
 }
 
 function toggleLanguage() {
-  const html = document.documentElement;
-  const faElements = document.querySelectorAll('.fa-text');
-  const enElements = document.querySelectorAll('.en-text');
+const html = document.documentElement;
+const faElements = document.querySelectorAll('.fa-text');
+const enElements = document.querySelectorAll('.en-text');
 
-  if (html.dir === 'rtl') {
-    html.dir = 'ltr';
-    html.lang = 'en';
-    faElements.forEach(el => el.classList.add('lang-hidden'));
-    enElements.forEach(el => el.classList.remove('lang-hidden'));
-  } else {
-    html.dir = 'rtl';
-    html.lang = 'fa';
-    faElements.forEach(el => el.classList.remove('lang-hidden'));
-    enElements.forEach(el => el.classList.add('lang-hidden'));
-  }
+if (html.dir === "rtl") {
+html.dir = "ltr";
+html.lang = "en";
+faElements.forEach(el => el.style.display = 'none');
+enElements.forEach(el => el.style.display = 'block');
+} else {
+html.dir = "rtl";
+html.lang = "fa";
+faElements.forEach(el => el.style.display = 'block');
+enElements.forEach(el => el.style.display = 'none');
+}
 }
 </script>
-
 </body>
 </html>
+
