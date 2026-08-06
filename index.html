@@ -1,1 +1,240 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sam Gitipasand | Official Website</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<style>
+:root {
+--bg: #000000;
+--text: #ffffff;
+--glass: rgba(255, 255, 255, 0.1);
+--glass-border: rgba(255, 255, 255, 0.2);
+--accent: #00d4ff;
+}
+
+[data-theme="light"] {
+--bg: #f0f0f0;
+--text: #1a1a1a;
+--glass: rgba(0, 0, 0, 0.05);
+--glass-border: rgba(0, 0, 0, 0.1);
+--accent: #0071e3;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
+body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
+
+/* --- دکمه‌های تنظیمات (نسخه جدید: گوشه بالا) --- /
+.top-controls {
+position: fixed;
+top: 20px;
+/ در حالت RTL سمت راست، در حالت LTR سمت چپ قرار می‌گیرد */
+right: 20px;
+z-index: 2000;
+display: flex;
+gap: 10px;
+}
+
+/* وقتی زبان انگلیسی شود، دکمه‌ها به سمت چپ بروند */
+html[dir="ltr"] .top-controls {
+right: auto;
+left: 20px;
+}
+
+.btn-control {
+background: var(--glass);
+backdrop-filter: blur(15px);
+-webkit-backdrop-filter: blur(15px);
+border: 1px solid var(--glass-border);
+color: var(--text);
+width: 45px;
+height: 45px;
+border-radius: 50%; /* دایره‌ای و مدرن */
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+font-size: 1.1rem;
+box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-control:hover {
+background: var(--accent);
+color: #000;
+transform: scale(1.1);
+}
+
+/* --- گالری پیانویی --- */
+.piano-wrapper {
+display: flex;
+width: 100%;
+height: 75vh;
+gap: 8px;
+padding: 10px;
+}
+
+.piano-item {
+flex: 1;
+height: 100%;
+border-radius: 15px;
+overflow: hidden;
+position: relative;
+cursor: pointer;
+transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
+border: 1px solid var(--glass-border);
+}
+
+.piano-item img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+transition: transform 0.7s ease;
+}
+
+.piano-item:hover {
+flex: 6;
+border-radius: 20px;
+}
+
+.piano-item:hover img {
+transform: scale(1.1);
+}
+
+/* --- محتوا --- */
+.content-container {
+margin: -60px 20px 60px;
+background: var(--glass);
+backdrop-filter: blur(25px);
+-webkit-backdrop-filter: blur(25px);
+border: 1px solid var(--glass-border);
+border-radius: 40px;
+padding: 50px 30px;
+text-align: center;
+position: relative;
+z-index: 10;
+max-width: 750px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.actor-name {
+font-size: clamp(2rem, 6vw, 3.5rem);
+font-weight: 200;
+letter-spacing: 5px;
+text-transform: uppercase;
+margin-bottom: 25px;
+background: linear-gradient(to right, var(--text), var(--accent));
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.about-text {
+font-size: 1.15rem;
+line-height: 2;
+margin-bottom: 35px;
+opacity: 0.9;
+}
+
+.social-footer {
+display: flex;
+justify-content: center;
+gap: 30px;
+}
+.social-footer a {
+color: var(--text);
+font-size: 2rem;
+transition: 0.3s;
+}
+.social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
+
+/* موبایل */
+@media (max-width: 768px) {
+.piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
+.piano-item { border-radius: 0; }
+.top-controls { top: 10px; }
+.btn-control { width: 40px; height: 40px; font-size: 1rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- دکمه‌های کنترلی (حالا در گوشه بالا و بسیار شیک) -->
+<div class="top-controls">
+<button class="btn-control" onclick="toggleLanguage()" title="تغییر زبان">
+<i class="fas fa-language"></i>
+</button>
+<button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
+<i class="fas fa-moon"></i>
+</button>
+</div>
+
+<!-- گالری -->
+<div class="piano-wrapper">
+<div class="piano-item"><img src="1Sam.jpg"></div>
+<div class="piano-item"><img src="3sam.jpg"></div>
+<div class="piano-item"><img src="4sam.jpg"></div>
+<div class="piano-item"><img src="5sam.jpg"></div>
+<div class="piano-item"><img src="7sam.jpg"></div>
+<div class="piano-item"><img src="8sam.jpg"></div>
+<div class="piano-item"><img src="9sam.jpg"></div>
+</div>
+
+<!-- محتوا -->
+<div class="content-container">
+<h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
+<h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
+
+<div class="about-text fa-text">
+من سام هستم، به وبسایت رسمی من خوش آمدید.<br>
+این وبسایت برای معرفی فعالیت‌ها، آثار هنری و راه‌های ارتباط با من طراحی شده است.<br>
+از همراهی شما سپاسگزارم.
+</div>
+<div class="about-text en-text" style="display:none">
+I am Sam. Welcome to my official website.<br>
+This website is designed to introduce my activities, artworks, and ways to connect with me.<br>
+Thank you for your support.
+</div>
+
+<div class="social-footer">
+<a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
+<a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
+<a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
+</div>
+</div>
+
+<script>
+function toggleTheme() {
+const body = document.body;
+const btn = document.getElementById('themeBtn');
+if (body.getAttribute('data-theme') === 'light') {
+body.removeAttribute('data-theme');
+btn.innerHTML = '<i class="fas fa-moon"></i>';
+} else {
+body.setAttribute('data-theme', 'light');
+btn.innerHTML = '<i class="fas fa-sun"></i>';
+}
+}
+
+function toggleLanguage() {
+const html = document.documentElement;
+const faElements = document.querySelectorAll('.fa-text');
+const enElements = document.querySelectorAll('.en-text');
+
+if (html.dir === "rtl") {
+html.dir = "ltr";
+html.lang = "en";
+faElements.forEach(el => el.style.display = 'none');
+enElements.forEach(el => el.style.display = 'block');
+} else {
+html.dir = "rtl";
+html.lang = "fa";
+faElements.forEach(el => el.style.display = 'block');
+enElements.forEach(el => el.style.display = 'none');
+}
+}
+</script>
+</body>
+</html>
+
 
