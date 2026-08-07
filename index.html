@@ -1,392 +1,656 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sam Gitipasand | Official Website</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<style>
-:root {
---bg: #000000;
---text: #ffffff;
---glass: rgba(255, 255, 255, 0.1);
---glass-border: rgba(255, 255, 255, 0.2);
---accent: #00d4ff;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sam Gitipasand | Official Website</title>
 
-[data-theme="light"] {
---bg: #f0f0f0;
---text: #1a1a1a;
---glass: rgba(0, 0, 0, 0.05);
---glass-border: rgba(0, 0, 0, 0.1);
---accent: #0071e3;
-}
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-* { margin: 0; padding: 0; box-sizing: border-box; transition: background 0.5s, color 0.5s; }
-body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', Tahoma, sans-serif; overflow-x: hidden; }
+  <style>
+    :root {
+      --bg: #07070a;
+      --bg2: #0e0f14;
+      --text: #f5f7fb;
+      --muted: rgba(245,247,251,.72);
+      --card: rgba(255,255,255,.08);
+      --card-border: rgba(255,255,255,.14);
+      --accent: #7dd3fc;
+      --accent2: #a78bfa;
+      --shadow: 0 18px 50px rgba(0,0,0,.35);
+      --radius: 22px;
+    }
 
-/* --- دکمه‌های تنظیمات (گوشه بالا) --- */
-.top-controls {
-position: fixed;
-top: 20px;
-right: 20px;
-z-index: 2000;
-display: flex;
-gap: 10px;
-}
+    body.light {
+      --bg: #f5f7fb;
+      --bg2: #ffffff;
+      --text: #111827;
+      --muted: rgba(17,24,39,.72);
+      --card: rgba(17,24,39,.05);
+      --card-border: rgba(17,24,39,.10);
+      --accent: #2563eb;
+      --accent2: #7c3aed;
+      --shadow: 0 14px 35px rgba(15,23,42,.12);
+    }
 
-html[dir="ltr"] .top-controls {
-right: auto;
-left: 20px;
-}
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at top, rgba(125,211,252,.10), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(167,139,250,.10), transparent 25%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      transition: background .35s ease, color .35s ease;
+    }
 
-.btn-control {
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-color: var(--text);
-width: 45px;
-height: 45px;
-border-radius: 50%;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
-font-size: 1.1rem;
-box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
+    .page {
+      width: min(1200px, calc(100% - 24px));
+      margin: 0 auto;
+      padding: 18px 0 36px;
+    }
 
-.btn-control:hover {
-background: var(--accent);
-color: #000;
-transform: scale(1.1);
-}
+    /* Top controls */
+    .top-controls {
+      position: fixed;
+      top: 14px;
+      right: 14px;
+      z-index: 1000;
+      display: flex;
+      gap: 10px;
+    }
 
-/* --- پیام خوش‌آمدگویی (استایل آبی) --- */
-.welcome-text {
-text-align: center;
-font-size: clamp(1.2rem, 3.5vw, 2rem);
-font-weight: 300;
-letter-spacing: 3px;
-margin: 35px 15px 5px;
-background: linear-gradient(to right, var(--text), var(--accent));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
-    <body>
-       <!-- دکمه‌های تم و زبان -->
-       
-       <!-- اینجا جایگزین کنید -->
-       <div class="header-container" style="text-align: center; margin-top: 20px;">
-           <h2 class="welcome-text fa-text">به وب‌سایت من خوش آمدید</h2>
-           <h2 class="welcome-text en-text" style="display:none;">Welcome to my website</h2>
-           <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
-           <h1 class="actor-name en-text" style="display:none;">SAM GITIPASAND</h1>
-       </div>
+    .ctrl-btn {
+      width: 46px;
+      height: 46px;
+      border: 1px solid var(--card-border);
+      background: var(--card);
+      color: var(--text);
+      border-radius: 14px;
+      cursor: pointer;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      box-shadow: var(--shadow);
+      display: grid;
+      place-items: center;
+      transition: transform .2s ease, background .2s ease, border-color .2s ease;
+    }
+    .ctrl-btn:hover { transform: translateY(-2px); }
+    .ctrl-btn i { font-size: 18px; }
 
-       <div class="piano-wrapper">...</div>
+    /* Header */
+    .hero {
+      text-align: center;
+      padding: 74px 14px 18px;
+    }
 
-/* --- گالری پیانویی (بدون هیچ تغییری) --- */
-.piano-wrapper {
-display: flex;
-width: 100%;
-height: 75vh;
-gap: 8px;
-padding: 10px;
-}
+    .welcome {
+      font-size: clamp(1rem, 2vw, 1.35rem);
+      letter-spacing: .02em;
+      color: var(--muted);
+      margin: 0 0 10px;
+    }
 
-.piano-item {
-flex: 1;
-height: 100%;
-border-radius: 15px;
-overflow: hidden;
-position: relative;
-cursor: pointer;
-transition: flex 0.7s cubic-bezier(0.25, 1, 0.5, 1), border-radius 0.5s;
-border: 1px solid var(--glass-border);
-}
+    .name {
+      margin: 0;
+      font-size: clamp(2rem, 4.5vw, 4rem);
+      line-height: 1.1;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--text), var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 18px rgba(125,211,252,.08);
+    }
 
-.piano-item img {
-width: 100%;
-height: 100%;
-object-fit: cover;
-transition: transform 0.7s ease;
-}
+    .subtitle {
+      margin: 12px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.9;
+    }
 
-.piano-item:hover {
-flex: 6;
-border-radius: 20px;
-}
+    /* Piano gallery */
+    .piano-wrap {
+      margin-top: 22px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+      padding: 12px;
+      overflow: hidden;
+    }
 
-.piano-item:hover img {
-transform: scale(1.1);
-}
+    .piano-gallery {
+      display: flex;
+      gap: 10px;
+      width: 100%;
+      height: 420px;
+      direction: ltr; /* مهم برای اینکه گالری پیانویی خراب نشود */
+    }
 
-/* --- محتوا --- */
-.content-container {
-margin: -60px 20px 60px;
-background: var(--glass);
-backdrop-filter: blur(25px);
--webkit-backdrop-filter: blur(25px);
-border: 1px solid var(--glass-border);
-border-radius: 40px;
-padding: 50px 30px;
-text-align: center;
-position: relative;
-z-index: 10;
-max-width: 750px;
-margin-left: auto;
-margin-right: auto;
-}
+    .piano-item {
+      position: relative;
+      flex: 1;
+      min-width: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: flex .7s ease, transform .35s ease, filter .35s ease;
+      box-shadow: 0 10px 30px rgba(0,0,0,.18);
+      filter: saturate(.95);
+    }
 
-.actor-name {
-font-size: clamp(2rem, 6vw, 3.5rem);
-font-weight: 200;
-letter-spacing: 5px;
-text-transform: uppercase;
-margin-bottom: 25px;
-background: linear-gradient(to right, var(--text), var(--accent));
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-}
+    .piano-item:hover {
+      flex: 5.5;
+      transform: translateY(-2px);
+      filter: saturate(1.05);
+    }
 
-/* --- تب‌ها --- */
-.tabs-container {
-display: flex;
-justify-content: center;
-gap: 10px;
-flex-wrap: wrap;
-margin-bottom: 30px;
-}
+    .piano-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
 
-.tab-btn {
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-color: var(--text);
-padding: 12px 28px;
-border-radius: 30px;
-cursor: pointer;
-font-size: 0.95rem;
-font-family: inherit;
-transition: all 0.3s ease;
-}
+    .piano-item:hover img {
+      transform: scale(1.03);
+    }
 
-.tab-btn:hover {
-border-color: var(--accent);
-transform: translateY(-2px);
-box-shadow: 0 8px 20px rgba(0, 212, 255, 0.15);
-}
+    .piano-label {
+      position: absolute;
+      inset-inline: 0;
+      bottom: 0;
+      padding: 14px 14px 12px;
+      color: #fff;
+      background: linear-gradient(180deg, transparent, rgba(0,0,0,.58));
+      font-weight: 700;
+      font-size: .92rem;
+      opacity: 0;
+      transition: opacity .3s ease;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .piano-item:hover .piano-label { opacity: 1; }
 
-.tab-btn.active {
-background: var(--accent);
-color: #000;
-border-color: var(--accent);
-font-weight: 600;
-box-shadow: 0 8px 25px rgba(0, 212, 255, 0.35);
-}
+    /* Tabs */
+    .section {
+      margin-top: 26px;
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      background: var(--card);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      overflow: hidden;
+    }
 
-.tab-content {
-display: none;
-background: var(--glass);
-backdrop-filter: blur(15px);
--webkit-backdrop-filter: blur(15px);
-border: 1px solid var(--glass-border);
-border-radius: 25px;
-padding: 30px 25px;
-line-height: 2;
-opacity: 0.9;
-font-size: 1.05rem;
-text-align: right;
-}
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 14px;
+      border-bottom: 1px solid var(--card-border);
+      justify-content: center;
+    }
 
-html[dir="ltr"] .tab-content {
-text-align: left;
-}
+    .tab-btn {
+      border: 1px solid var(--card-border);
+      background: transparent;
+      color: var(--text);
+      padding: 12px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 700;
+      transition: .2s ease;
+    }
 
-.tab-content.active {
-display: block;
-animation: fadeIn 0.4s ease;
-}
+    .tab-btn:hover {
+      transform: translateY(-1px);
+      background: rgba(125,211,252,.10);
+    }
 
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(12px); }
-to { opacity: 1; transform: translateY(0); }
-}
+    .tab-btn.active {
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      color: #fff;
+      border-color: transparent;
+    }
 
-.category-title {
-color: var(--accent);
-font-weight: 600;
-margin-bottom: 5px;
-}
+    .tab-content {
+      display: none;
+      padding: 22px 20px 24px;
+      line-height: 2;
+      color: var(--text);
+    }
 
-/* --- فوتر شبکه‌های اجتماعی --- */
-.social-footer {
-display: flex;
-justify-content: center;
-gap: 30px;
-margin-top: 35px;
-}
-.social-footer a {
-color: var(--text);
-font-size: 2rem;
-transition: 0.3s;
-}
-.social-footer a:hover { color: var(--accent); transform: translateY(-5px); }
+    .tab-content.active {
+      display: block;
+      animation: fadeIn .25s ease;
+    }
 
-/* موبایل */
-@media (max-width: 768px) {
-.piano-wrapper { height: 50vh; gap: 4px; padding: 5px; }
-.piano-item { border-radius: 0; }
-.top-controls { top: 10px; }
-.btn-control { width: 40px; height: 40px; font-size: 1rem; }
-.content-container { padding: 35px 18px; border-radius: 30px; }
-.tab-btn { padding: 10px 18px; font-size: 0.85rem; flex: 1 1 auto; }
-.tab-content { padding: 22px 16px; font-size: 0.95rem; }
-}
-</style>
+    @keyframes fadeIn {
+      from { opacity: .3; transform: translateY(6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .content-title {
+      margin: 0 0 14px;
+      font-size: 1.2rem;
+      font-weight: 900;
+    }
+
+    .list {
+      margin: 0;
+      padding-inline-start: 18px;
+    }
+
+    .list li { margin-bottom: 8px; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .info-card {
+      border: 1px solid var(--card-border);
+      border-radius: 18px;
+      padding: 14px 16px;
+      background: rgba(255,255,255,.03);
+    }
+
+    .info-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 1rem;
+      color: var(--accent);
+    }
+
+    /* Social */
+    .social-footer {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      padding: 18px 14px 22px;
+      flex-wrap: wrap;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      display: inline-grid;
+      place-items: center;
+      border-radius: 16px;
+      border: 1px solid var(--card-border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform .2s ease, background .2s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      background: rgba(125,211,252,.12);
+    }
+
+    .social-link i {
+      font-size: 22px;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .piano-gallery {
+        height: 320px;
+      }
+
+      .grid-2 {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .page { width: min(100% - 16px, 1200px); }
+      .hero { padding-top: 80px; }
+      .piano-gallery {
+        height: 260px;
+        gap: 8px;
+      }
+      .piano-item:hover { flex: 4.2; }
+      .tabs { justify-content: stretch; }
+      .tab-btn { flex: 1 1 calc(50% - 10px); }
+      .tab-content { padding: 18px 16px 20px; }
+    }
+
+    @media (max-width: 520px) {
+      .piano-gallery {
+        height: 220px;
+      }
+      .tab-btn {
+        flex: 1 1 100%;
+      }
+      .top-controls {
+        top: 10px;
+        right: 10px;
+      }
+      .ctrl-btn {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+    }
+
+    /* Language helpers */
+    .en-text { display: none; }
+    body.lang-en {
+      direction: ltr;
+    }
+    body.lang-en .fa-text { display: none !important; }
+    body.lang-en .en-text { display: inline !important; }
+    body.lang-en .hero,
+    body.lang-en .section,
+    body.lang-en .tab-content {
+      text-align: left;
+    }
+    body.lang-en .top-controls {
+      right: auto;
+      left: 14px;
+    }
+    body.lang-en .piano-gallery {
+      direction: ltr;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    a { color: inherit; }
+  </style>
 </head>
 <body>
 
-<!-- دکمه‌های کنترلی -->
-<div class="top-controls">
-<button class="btn-control" onclick="toggleLanguage()" title="تغییر زبان">
-<i class="fas fa-language"></i>
-</button>
-<button class="btn-control" onclick="toggleTheme()" id="themeBtn" title="تغییر تم">
-<i class="fas fa-moon"></i>
-</button>
-</div>
+  <!-- دکمه‌های بالا سمت راست -->
+  <div class="top-controls">
+    <button class="ctrl-btn" onclick="toggleLanguage()" title="Language">
+      <i class="fa-solid fa-language"></i>
+    </button>
+    <button class="ctrl-btn" onclick="toggleTheme()" id="themeBtn" title="Theme">
+      <i class="fa-solid fa-moon"></i>
+    </button>
+  </div>
 
-<!-- پیام خوش‌آمدگویی (بالای گالری) -->
-<h2 class="welcome-text fa-text">به وب‌سایت من خوش آمدید</h2>
-<h2 class="welcome-text en-text" style="display:none">Welcome to my website</h2>
+  <div class="page">
 
-<!-- گالری پیانویی (دست‌نخورده) -->
-<div class="piano-wrapper">
-<div class="piano-item"><img src="1sam.jpg"></div>
-<div class="piano-item"><img src="3sam.jpg"></div>
-<div class="piano-item"><img src="4sam.jpg"></div>
-<div class="piano-item"><img src="5sam.jpg"></div>
-<div class="piano-item"><img src="7sam.jpg"></div>
-<div class="piano-item"><img src="8sam.jpg"></div>
-<div class="piano-item"><img src="9sam.jpg"></div>
-</div>
+    <!-- 1) خوش‌آمدگویی + نام -->
+    <header class="hero">
+      <p class="welcome fa-text">به وب‌سایت من خوش آمدید</p>
+      <p class="welcome en-text">Welcome to my website</p>
 
-<!-- محتوا -->
-<div class="content-container">
-<h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
-<h1 class="actor-name en-text" style="display:none">SAM GITIPASAND</h1>
+      <h1 class="name fa-text">سام گیتی‌پسند</h1>
+      <h1 class="name en-text">SAM GITIPASAND</h1>
 
-<!-- تب‌ها -->
-<div class="tabs-container">
-<button class="tab-btn active" onclick="openTab(event, 'about')">
-<span class="fa-text">درباره من</span>
-<span class="en-text" style="display:none">About Me</span>
-</button>
-<button class="tab-btn" onclick="openTab(event, 'career')">
-<span class="fa-text">سریال‌ها و تیزرها</span>
-<span class="en-text" style="display:none">Series & Commercials</span>
-</button>
-<button class="tab-btn" onclick="openTab(event, 'skills')">
-<span class="fa-text">مهارت‌ها</span>
-<span class="en-text" style="display:none">Skills</span>
-</button>
-</div>
+      <p class="subtitle fa-text">
+        بازیگر و مدل | پورتفولیوی رسمی سام گیتی‌پسند
+      </p>
+      <p class="subtitle en-text">
+        Actor & Model | Official portfolio of Sam Gitipasand
+      </p>
+    </header>
 
-<!-- تب ۱: درباره من -->
-<div id="about" class="tab-content active">
-<div class="fa-text">
-من سام گیتی‌پسند هستم؛ بازیگر و مدل کودک.<br>
-متولد ۱۳۹۸ و شروع فعالیت حرفه‌ای از سال ۱۴۰۱.<br>
-عاشق هنر، دوربین و اجرا هستم و تجربه همکاری با برندها و پروژه‌های متنوع را دارم.
-</div>
-<div class="en-text" style="display:none">
-I am Sam Gitipasand; a child actor & model.<br>
-Born in 2019, started my professional career in 2022.<br>
-I love art, camera and performing, with experience working with various brands and projects.
-</div>
-</div>
+    <!-- 2) گالری پیانویی -->
+    <section class="piano-wrap" aria-label="Gallery">
+      <div class="piano-gallery">
+        <div class="piano-item">
+          <img src="1sam.jpg" alt="Sam photo 1">
+          <div class="piano-label fa-text">عکس ۱</div>
+          <div class="piano-label en-text">Photo 1</div>
+        </div>
 
-<!-- تب ۲: سریال‌ها و تیزرها -->
-<div id="career" class="tab-content">
-<div class="fa-text">
-<div class="category-title">سریال‌ها</div>
-مرز، نگین ارباب، برتا
-<div class="category-title" style="margin-top:15px">تیزرها</div>
-کاله، ماجان، آقای فرش، بیمه دی، دوو
-</div>
-<div class="en-text" style="display:none">
-<div class="category-title">TV Series</div>
-Marz, Negin-e-Arbab, Berta
-<div class="category-title" style="margin-top:15px">Commercials</div>
-Kaleh, Majan, Mr. Farsh, Day Insurance, Daewoo
-</div>
-</div>
+        <div class="piano-item">
+          <img src="3sam.jpg" alt="Sam photo 2">
+          <div class="piano-label fa-text">عکس ۲</div>
+          <div class="piano-label en-text">Photo 2</div>
+        </div>
 
-<!-- تب ۳: مهارت‌ها -->
-<div id="skills" class="tab-content">
-<div class="fa-text">
-<div class="category-title">زبان‌ها</div>
-فارسی، انگلیسی، چینی
-<div class="category-title" style="margin-top:15px">ورزش‌ها</div>
-شنا، بسکتبال، ژیمناستیک
-</div>
-<div class="en-text" style="display:none">
-<div class="category-title">Languages</div>
-Persian, English, Chinese
-<div class="category-title" style="margin-top:15px">Sports</div>
-Swimming, Basketball, Gymnastics
-</div>
-</div>
+        <div class="piano-item">
+          <img src="4sam.jpg" alt="Sam photo 3">
+          <div class="piano-label fa-text">عکس ۳</div>
+          <div class="piano-label en-text">Photo 3</div>
+        </div>
 
-<!-- شبکه‌های اجتماعی -->
-<div class="social-footer">
-<a href="https://t.me/sam_gitipasand1" target="_blank"><i class="fab fa-telegram"></i></a>
-<a href="https://www.instagram.com/sam_gitipasand1?igsh=dWRocjdlc3d6dDY3" target="_blank"><i class="fab fa-instagram"></i></a>
-<a href="https://wa.me/989369957018" target="_blank"><i class="fab fa-whatsapp"></i></a>
-</div>
-</div>
+        <div class="piano-item">
+          <img src="5sam.jpg" alt="Sam photo 4">
+          <div class="piano-label fa-text">عکس ۴</div>
+          <div class="piano-label en-text">Photo 4</div>
+        </div>
 
-<script>
-function toggleTheme() {
-const body = document.body;
-const btn = document.getElementById('themeBtn');
-if (body.getAttribute('data-theme') === 'light') {
-body.removeAttribute('data-theme');
-btn.innerHTML = '<i class="fas fa-moon"></i>';
-} else {
-body.setAttribute('data-theme', 'light');
-btn.innerHTML = '<i class="fas fa-sun"></i>';
-}
-}
+        <div class="piano-item">
+          <img src="7sam.jpg" alt="Sam photo 5">
+          <div class="piano-label fa-text">عکس ۵</div>
+          <div class="piano-label en-text">Photo 5</div>
+        </div>
 
-function toggleLanguage() {
-const html = document.documentElement;
-const faElements = document.querySelectorAll('.fa-text');
-const enElements = document.querySelectorAll('.en-text');
+        <div class="piano-item">
+          <img src="8sam.jpg" alt="Sam photo 6">
+          <div class="piano-label fa-text">عکس ۶</div>
+          <div class="piano-label en-text">Photo 6</div>
+        </div>
 
-if (html.dir === "rtl") {
-html.dir = "ltr";
-html.lang = "en";
-faElements.forEach(el => el.style.display = 'none');
-enElements.forEach(el => el.style.display = 'block');
-} else {
-html.dir = "rtl";
-html.lang = "fa";
-faElements.forEach(el => el.style.display = 'block');
-enElements.forEach(el => el.style.display = 'none');
-}
-}
+        <div class="piano-item">
+          <img src="9sam.jpg" alt="Sam photo 7">
+          <div class="piano-label fa-text">عکس ۷</div>
+          <div class="piano-label en-text">Photo 7</div>
+        </div>
+      </div>
+    </section>
 
-function openTab(evt, tabName) {
-document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-document.getElementById(tabName).classList.add('active');
-evt.currentTarget.classList.add('active');
-}
-</script>
+    <!-- 3) تب‌ها -->
+    <section class="section">
+      <div class="tabs">
+        <button class="tab-btn active" onclick="openTab(event, 'about')">
+          <span class="fa-text">درباره من</span>
+          <span class="en-text">About Me</span>
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'skills')">
+          <span class="fa-text">مهارت‌ها</span>
+          <span class="en-text">Skills</span>
+        </button>
+        <button class="tab-btn" onclick="openTab(event, 'resume')">
+          <span class="fa-text">رزومه / سریال‌ها و تیزرها</span>
+          <span class="en-text">Resume / Filmography & Commercials</span>
+        </button>
+      </div>
+
+      <!-- درباره من -->
+      <div id="about" class="tab-content active">
+        <h2 class="content-title fa-text">درباره من</h2>
+        <h2 class="content-title en-text">About Me</h2>
+
+        <p class="fa-text">
+          من سام گیتی‌پسند هستم؛ بازیگر و مدل. تمرکزم روی اجرا، تصویر، بازی مقابل دوربین و حضور حرفه‌ای در پروژه‌های هنری و تبلیغاتی است.
+          این وب‌سایت برای معرفی نمونه‌کارها، رزومه، مهارت‌ها و مسیر حرفه‌ای من طراحی شده است.
+        </p>
+        <p class="en-text">
+          I am Sam Gitipasand, an actor and model. My focus is on performance, screen presence, camera work, and professional participation in artistic and commercial projects.
+          This website is designed to present my portfolio, resume, skills, and professional journey.
+        </p>
+
+        <div class="grid-2" style="margin-top:16px;">
+          <div class="info-card">
+            <strong class="fa-text">حوزه فعالیت</strong>
+            <strong class="en-text">Field</strong>
+            <div class="fa-text">بازیگری، مدلینگ، تیزر تبلیغاتی، پروژه‌های تصویری</div>
+            <div class="en-text">Acting, modeling, commercials, visual projects</div>
+          </div>
+
+          <div class="info-card">
+            <strong class="fa-text">رویکرد کاری</strong>
+            <strong class="en-text">Work Style</strong>
+            <div class="fa-text">منظم، حرفه‌ای، قابل‌اعتماد و آماده برای همکاری‌های جدی</div>
+            <div class="en-text">Professional, disciplined, reliable, and ready for serious collaborations</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- مهارت‌ها -->
+      <div id="skills" class="tab-content">
+        <h2 class="content-title fa-text">مهارت‌ها</h2>
+        <h2 class="content-title en-text">Skills</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <strong class="fa-text">زبان‌ها</strong>
+            <strong class="en-text">Languages</strong>
+            <ul class="list fa-text">
+              <li>فارسی</li>
+              <li>انگلیسی</li>
+              <li>چینی</li>
+            </ul>
+            <ul class="list en-text">
+              <li>Persian</li>
+              <li>English</li>
+              <li>Chinese</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <strong class="fa-text">ورزش‌ها و فعالیت‌ها</strong>
+            <strong class="en-text">Sports & Activities</strong>
+            <ul class="list fa-text">
+              <li>شنا</li>
+              <li>بسکتبال</li>
+              <li>ژیمناستیک</li>
+              <li>فعالیت بدنی و آمادگی برای نقش‌های تصویری</li>
+            </ul>
+            <ul class="list en-text">
+              <li>Swimming</li>
+              <li>Basketball</li>
+              <li>Gymnastics</li>
+              <li>Physical training and on-camera readiness</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-card" style="margin-top:14px;">
+          <strong class="fa-text">مهارت‌های اجرایی</strong>
+          <strong class="en-text">Performance Skills</strong>
+          <p class="fa-text" style="margin:0;">
+            بیان جلوی دوربین، اجرای احساسی، حضور در تیزرهای تبلیغاتی، هماهنگی با کارگردانی، و توانایی کار در پروژه‌های مختلف تصویری.
+          </p>
+          <p class="en-text" style="margin:0;">
+            On-camera expression, emotional performance, commercial acting, director coordination, and adaptability across visual projects.
+          </p>
+        </div>
+      </div>
+
+      <!-- رزومه / سریال‌ها و تیزرها -->
+      <div id="resume" class="tab-content">
+        <h2 class="content-title fa-text">رزومه / سریال‌ها و تیزرها</h2>
+        <h2 class="content-title en-text">Resume / Filmography & Commercials</h2>
+
+        <div class="grid-2">
+          <div class="info-card">
+            <strong class="fa-text">سریال‌ها و آثار تصویری</strong>
+            <strong class="en-text">Series & Visual Works</strong>
+
+            <ul class="list fa-text">
+              <li><b>مرز</b> — حضور در پروژه تصویری / نقش متناسب با فضای داستان</li>
+              <li><b>نگین ارباب</b> — همکاری در سریال و کاراکترسازی جلوی دوربین</li>
+              <li><b>برتا</b> — ایفای نقش در فضای نمایشی و تصویری</li>
+              <li><b>پروژه‌های دیگر</b> — همکاری در تولیدات تصویری و تست بازیگری</li>
+            </ul>
+
+            <ul class="list en-text">
+              <li><b>Marz</b> — Participation in a visual production / role aligned with the story’s tone</li>
+              <li><b>Negin-e Arbab</b> — Collaboration in a series and on-camera character work</li>
+              <li><b>Berta</b> — Acting in a dramatic visual project</li>
+              <li><b>Other projects</b> — Visual productions and casting collaborations</li>
+            </ul>
+          </div>
+
+          <div class="info-card">
+            <strong class="fa-text">تیزرها و همکاری‌های تبلیغاتی</strong>
+            <strong class="en-text">Commercials & Brand Collaborations</strong>
+
+            <ul class="list fa-text">
+              <li><b>کاله</b> — حضور در تیزر تبلیغاتی</li>
+              <li><b>بیمه دی</b> — همکاری در تولید محتوای تبلیغاتی</li>
+              <li><b>ماجان</b> — اجرای تصویری در فضای برند</li>
+              <li><b>آقای فرش</b> — حضور در پروژه تبلیغاتی</li>
+              <li><b>دوو</b> — همکاری در تیزر و معرفی محصول</li>
+            </ul>
+
+            <ul class="list en-text">
+              <li><b>Kalleh</b> — Commercial appearance</li>
+              <li><b>Dey Insurance</b> — Promotional content collaboration</li>
+              <li><b>Majan</b> — Brand-facing visual performance</li>
+              <li><b>Mr. Farsh</b> — Advertising project appearance</li>
+              <li><b>Daewoo</b> — Commercial and product presentation collaboration</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-card" style="margin-top:14px;">
+          <strong class="fa-text">جمع‌بندی رزومه</strong>
+          <strong class="en-text">Resume Summary</strong>
+          <p class="fa-text" style="margin:0;">
+            تجربه من در بازیگری، تیزرهای تبلیغاتی، پروژه‌های تصویری و کار مقابل دوربین در حال گسترش است و آماده‌ام در نقش‌های حرفه‌ای‌تر و همکاری‌های بیشتر حضور داشته باشم.
+          </p>
+          <p class="en-text" style="margin:0;">
+            My experience in acting, commercials, visual productions, and on-camera work is growing, and I am ready for more professional roles and collaborations.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4) شبکه‌های اجتماعی -->
+    <footer class="social-footer">
+      <a class="social-link" href="https://instagram.com/" target="_blank" rel="noopener" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a class="social-link" href="https://wa.me/" target="_blank" rel="noopener" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
+      <a class="social-link" href="https://t.me/" target="_blank" rel="noopener" title="Telegram">
+        <i class="fa-brands fa-telegram"></i>
+      </a>
+    </footer>
+  </div>
+
+  <script>
+    function openTab(e, id) {
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      e.currentTarget.classList.add('active');
+    }
+
+    function toggleTheme() {
+      document.body.classList.toggle('light');
+      const btn = document.getElementById('themeBtn');
+      const isLight = document.body.classList.contains('light');
+      btn.innerHTML = isLight
+        ? '<i class="fa-solid fa-sun"></i>'
+        : '<i class="fa-solid fa-moon"></i>';
+    }
+
+    function toggleLanguage() {
+      document.body.classList.toggle('lang-en');
+
+      const isEnglish = document.body.classList.contains('lang-en');
+      document.documentElement.lang = isEnglish ? 'en' : 'fa';
+      document.documentElement.dir = isEnglish ? 'ltr' : 'rtl';
+    }
+  </script>
 </body>
 </html>
