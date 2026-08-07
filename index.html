@@ -179,6 +179,44 @@ transition: 0.3s;
 <div class="piano-item"><img src="8sam.jpg"></div>
 <div class="piano-item"><img src="9sam.jpg"></div>
 </div>
+    <!-- سربرگ -->
+<div class="content-container">
+    <h1 class="actor-name fa-text">سام گیتی‌پسند</h1>
+    <h1 class="actor-name en-text" style="display:none;">Sam Gitipasand</h1>
+    
+    <!-- دکمه‌های سوئیچ زبان -->
+    <button onclick="toggleLang()" style="background: #00d4ff; border: none; padding: 5px 15px; border-radius: 10px; cursor: pointer;">FA / EN</button>
+</div>
+
+<!-- تب‌ها -->
+<div class="tabs-container">
+    <button class="tab-btn active" onclick="openTab(event, 'about')">درباره من</button>
+    <button class="tab-btn" onclick="openTab(event, 'career')">سوابق</button>
+    <button class="tab-btn" onclick="openTab(event, 'skills')">مهارت‌ها</button>
+</div>
+
+<!-- محتوا -->
+<div id="about" class="tab-content active">
+    <div class="fa-text">سام گیتی‌پسند، بازیگر و مدل کودک. شروع فعالیت حرفه‌ای از سال ۱۴۰۱. متولد ۱۳۹۸.</div>
+    <div class="en-text" style="display:none;">Sam Gitipasand, Child Actor & Model. Started professional career in 2022. Born in 2019.</div>
+</div>
+
+<div id="career" class="tab-content">
+    <div class="fa-text">
+        سریال‌ها: مرز، نگین ارباب، برتا<br>
+        تیزرها: کاله، ماجان، آقای فرش، بیمه دی، دوو
+    </div>
+    <div class="en-text" style="display:none;">
+        Series: Marz, Negin-e-Arbab, Berta<br>
+        Commercials: Kaleh, Majan, Mr. Farsh, Day Insurance, Daewoo
+    </div>
+</div>
+
+<div id="skills" class="tab-content">
+    <div class="fa-text">زبان‌ها: فارسی، انگلیسی، چینی | ورزش‌ها: شنا، بسکتبال، ژیمناستیک</div>
+    <div class="en-text" style="display:none;">Languages: Persian, English, Chinese | Sports: Swimming, Basketball, Gymnastics</div>
+</div>
+
 <!-- بخش رزومه و بیوگرافی -->
 <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 20px; margin: 20px auto; max-width: 800px; color: white; text-align: right; direction: rtl;">
     <h2 style="color: #00d4ff; text-align: center;">سام گیتی‌پسند</h2>
@@ -187,6 +225,11 @@ transition: 0.3s;
     <h3 style="color: #00d4ff; border-bottom: 1px solid #00d4ff; display: inline-block;">مهارت‌ها</h3>
     <p><strong>زبان‌ها:</strong> مسلط به فارسی، انگلیسی و چینی</p>
     <p><strong>ورزش‌ها:</strong> دوچرخه‌سواری، بدمینتون، شنا، بسکتبال و ژیمناستیک</p>
+.tabs-container { display: flex; justify-content: center; gap: 10px; margin: 20px 0; }
+.tab-btn { background: rgba(255,255,255,0.1); color: white; border: 1px solid #00d4ff; padding: 10px 20px; cursor: pointer; border-radius: 10px; }
+.tab-btn.active { background: #00d4ff; color: black; }
+.tab-content { display: none; background: rgba(0,0,0,0.5); padding: 20px; border-radius: 15px; text-align: center; color: white; margin: 0 10%; }
+.tab-content.active { display: block; }
 
     <h3 style="color: #00d4ff; border-bottom: 1px solid #00d4ff; display: inline-block; margin-top: 15px;">سوابق هنری</h3>
     <ul style="line-height: 1.8; padding-right: 20px;">
@@ -253,5 +296,19 @@ enElements.forEach(el => el.style.display = 'none');
 }
 }
 </script>
+    <script>
+function openTab(evt, tabName) {
+    document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(tabName).classList.add('active');
+    evt.currentTarget.classList.add('active');
+}
+
+function toggleLang() {
+    document.querySelectorAll('.fa-text').forEach(el => el.style.display = (el.style.display === 'none') ? 'block' : 'none');
+    document.querySelectorAll('.en-text').forEach(el => el.style.display = (el.style.display === 'none') ? 'block' : 'none');
+}
+</script>
+
 </body>
 </html>
